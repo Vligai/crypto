@@ -1,0 +1,20 @@
+Script started on Tue May  3 20:18:30 2016
+$ ./skgu_pki init
+$ ./skgu_pki cert -g alice.priv alice.pub alice
+$ ./skgu_pki cert -g bob.priv bob.pub bob
+$ ./skgu_nidh alice.priv alice.cert alice bob.pub bob.cert bob example1
+Valid certificate
+$ ls example1-alice.*
+example1-alice.b64
+$ cat example1-alice.b64
+upP1RRWxqKx17n5SCoynd75W1PuXmu/MJdi7tlSyzmc=
+$ ./skgu_nidh bob.priv bob.cert bob alice.pub alice.cert alice example1
+Valid certificate
+$ ls example1-bob.*
+example1-bob.b64
+$ cat example1-bob.b64
+upP1RRWxqKx17n5SCoynd75W1PuXmu/MJdi7tlSyzmc=
+$ diff example1-alice.b64 example1-bob.b64
+$ 
+
+Script done on Tue May  3 20:20:20 2016
